@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* the font part */
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url(../public/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url(../public/fonts/Roboto-Bold.ttf);
+}
+
+/* custom style for tailwind */
+@theme {
+  --color-purple-custom: #220646;
+  --font-roboto-bold: 'Roboto-Bold';
+  --font-roboto-regular: 'Roboto-Regular';
+}
+
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js-cms-project</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+  </head>
+
+  <body 
+    class="h-screen scroll-smooth font-roboto-regular  dark:bg-gray-800 dark:text-white">
+    <!-- Main container: sidebar + content -->
+    <div class="flex w-full h-full">
+      <!-- Sidebar  -->
+      <side-bar></side-bar>
+      <!-- Main content area -->
+      <main class="flex-1 p-4">
+        <!-- Header (full width of main content) -->
+        <header-bar></header-bar>
+        <section
+          class="wraper-table flex flex-col my-6 h-1/2 shadow-xl shadow-balck dark:bg-gray-950"
+        >
+          <section
+            class="holder flex flex-row justify-between items-center p-5 dark:bg-gray-950"
+          >
+            <div class="left-content flex">
+              <h1 class="text-xl text-black dark:text-white mr-3">
+                Order catalogue
+              </h1>
+              <span
+                class="bg-emerald-300 flex items-center justify-center dark:bg-emerald-800 p-0 m-0 rounded-md text-center text-sm text-white"
+                >New items</span
+              >
+            </div>
+            <div class="rhight-content flex items-center flex-row mx-4">
+              <!-- not sure to add this feature -->
+              <!-- <button class="flex items-center px-4 py-2 border mr-8 border-gray-300 text-gray-400 rounded-lg"> 
+              <span class="mr-2">Select column</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6-6 6 6"></path>
+                <path d="M18 15l-6 6-6-6"></path>
+              </svg>
+            </button> -->
+              <div class="relative w-64 m-2">
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="Search list..."
+                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-purple-950"
+                />
+                <svg
+                  class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-4.35-4.35M17 10a7 7 0 1 0-14 0 7 7 0 0 0 14 0z"
+                  />
+                </svg>
+              </div>
+              <!-- <div id="sort" class="cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer" viewBox="0 0 24 24" width="48" height="48"
+                fill="gray">
+                <path d="M10 18h4v-2h-4v2zm-6-6v2h12v-2H4zm16-6H4v2h16V6z" />
+              </svg>
+            </div> -->
+              <button
+                id="addNew"
+                class="bg-purple-600 text-white rounded-md p-2 hover:bg-purple-700 cursor-pointer dark:bg-purple-900 hover:dark:bg-purple-800"
+              >
+                Add new
+              </button>
+            </div>
+          </section>
+          <section class="table-content">
+            <table
+              class="w-full h-full border-collapse border border-gray-200 dark:border-none rounded-lg"
+            >
+              <thead
+                class="bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-white"
+              >
+                <tr>
+                  <th class="px-4 py-2 text-left">#</th>
+                  <th class="px-4 py-2 text-left">Product</th>
+                  <th class="px-4 py-2 text-left">Serial-code</th>
+                  <th class="px-4 py-2 text-left">Price</th>
+                  <th class="px-4 py-2 text-left">Category</th>
+                  <th class="px-4 py-2 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="the-product-holder"></tbody>
+            </table>
+          </section>
+        </section>
+        <!-- edit modal -->
+
+        <div
+          id="modal"
+          class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden"
+        >
+          <div
+            class="bg-white dark:bg-emerald-800 p-6 rounded-lg shadow-lg w-full max-w-md"
+          >
+            <h2 class="text-2xl font-semibold mb-4">edit the product</h2>
+            <form action="">
+              <div class="mb-4">
+                <label for="email" class="block dark:text-white text-gray-700"
+                  >product</label
+                >
+                <input
+                  type="text"
+                  id="edit-product-name"
+                  name="email"
+                  class="w-full px-4 py-2 mt-1 border dark:bg-sky-700 dark:text-white rounded-md shadow-sm focus:outline-none text-black dark:border-0 focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="password"
+                  class="block dark:text-white text-gray-700"
+                  >Category</label
+                >
+                <input
+                  type="text"
+                  id="edit-category"
+                  name="password"
+                  class="w-full px-4 py-2 mt-1 border rounded-md dark:bg-sky-700 dark:text-white shadow-sm focus:outline-none focus:ring-2 dark:border-0 focus:ring-blue-400 focus:border-blue-400"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="price" class="block dark:text-white text-gray-700"
+                  >Price tag</label
+                >
+                <input
+                  type="number"
+                  id="edit-price"
+                  name="price"
+                  class="w-full px-4 py-2 mt-1 border rounded-md dark:bg-sky-700 dark:text-white shadow-sm focus:outline-none focus:ring-2 dark:border-0 focus:ring-blue-400 focus:border-blue-400"
+                />
+              </div>
+              <button
+                type="submit"
+                id="save-edit"
+                class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+              >
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- Modal -->
+        <!--add Modal -->
+        <section
+          id="modal2"
+          class="fixed inset-0 flex items-center justify-center bg-gray-400 dark:bg-gray-800 bg-opacity-50 hidden"
+        >
+          <div
+            class="bg-white shadow-lg dark:bg-gray-950 dark:shadow-md h-fit w-full max-w-md rounded-lg p-6"
+          >
+            <form action="">
+              <div class="flex flex-col items-start space-y-4">
+                <label
+                  for="product-name"
+                  class="text-lg font-semibold text-gray-700 dark:text-gray-100"
+                  >Product Name</label
+                >
+                <input
+                  type="text"
+                  id="product-name"
+                  name="name"
+                  class="w-full border rounded-md shadow-sm p-2 dark:text-gray-100 dark:border-gray-600 border-gray-300 text-gray-900"
+                  placeholder="Enter your Product name"
+                />
+
+                <label
+                  for="price"
+                  class="text-lg font-semibold text-gray-700 dark:text-gray-100"
+                  >Price</label
+                >
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  class="w-full border rounded-md shadow-sm p-2 dark:text-gray-100 dark:border-gray-600 border-gray-300 text-gray-900"
+                  placeholder="Enter your price number"
+                />
+
+                <label
+                  for="category"
+                  class="text-lg font-semibold text-gray-700 dark:text-gray-100"
+                  >Category</label
+                >
+                <input
+                  type="text"
+                  id="category"
+                  name="category"
+                  class="w-full border rounded-md shadow-sm p-2 dark:text-gray-100 dark:border-gray-600 border-gray-300 text-gray-900"
+                  placeholder="Enter your Category name"
+                />
+
+                <button
+                  type="submit"
+                  id="save-btn"
+                  class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- end of the modal -->
+      </main>
+    </div>
+
+    <script type="module" src="./src/inedx.js"></script>
+  </body>
+</html>
