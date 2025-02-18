@@ -9,7 +9,7 @@ template.innerHTML = `
 <section class="bg-purple-custom dark:bg-gray-950 dark:text-white w-64">
         <div class="flex flex-col items-center h-full">
           <div class="flex items-center justify-center w-16 h-16 my-5 rounded-full">
-            <img src="./public/img/amir.webp" alt="logo" class="w-full" />
+            <img src="./dist/img/amir.webp" alt="logo" class="w-full" />
 
           </div>
           <nav class="flex flex-col items-center">
