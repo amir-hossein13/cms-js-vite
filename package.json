@@ -1,4 +1,5 @@
 {
+  "homepage": "https://amir-hossein13.github.io/cms-js-vite/",
   "name": "cms-js-vite",
   "private": true,
   "version": "0.0.0",
@@ -6,13 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "vite": "^6.1.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.0.7"
   }
 }
