@@ -44,7 +44,8 @@
     </div>
 
 `;class y extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"}),this.shadowRoot.appendChild(i.content.cloneNode(!0))}}const u=document.createElement("template");u.innerHTML=`
-      <link rel="stylesheet" crossorigin href="./assets/index-B21F1v3Q.css">
+          <link rel="stylesheet" crossorigin href="./assets/index-PAYu7vJb.css">
+
 <header
         class="header flex flex-row justify-between items-center dark:bg-gray-950 dark:text-white shadow-md p-4 rounded-md w-full">
         <div class="header__title flex flex-row items-center">
